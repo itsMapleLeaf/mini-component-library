@@ -2,20 +2,11 @@ import React from "react"
 import { tw } from "twind"
 
 const ProgressBar = ({ value, size }) => {
-  const outerStyle = tw`
-    ${size === "small" && `h-2`}
-    ${size === "medium" && `h-3`}
-    ${size === "large" && `h-6 p-1`}
-    bg-transparentGray15
-    shadow-inset
-    rounded-lg
-  `
-
-  const fillStyle = tw`
-    bg-primary
-    h-full
-    origin-left transition-transform scale-x-[${value / 100}]
-  `
+  const sizeStyles = {
+    small: `h-2`,
+    medium: `h-3`,
+    large: `h-6`,
+  }
 
   return (
     <div
@@ -24,10 +15,16 @@ const ProgressBar = ({ value, size }) => {
       aria-valuemin={0}
       aria-valuemax={100}
       aria-valuetext="Progress"
-      className={outerStyle}
+      className={tw`bg-transparentGray15 shadow-inset rounded-lg ${sizeStyles[size]}`}
     >
       <div className={tw`rounded overflow-hidden h-full`}>
-        <div className={fillStyle}></div>
+        <div
+          className={tw`
+            bg-primary
+            h-full
+            origin-left transition-transform scale-x-[${value / 100}]
+          `}
+        />
       </div>
     </div>
   )
