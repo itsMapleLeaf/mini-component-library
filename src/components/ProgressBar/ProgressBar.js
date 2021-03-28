@@ -14,9 +14,7 @@ const ProgressBar = ({ value, size }) => {
   const fillStyle = tw`
     bg-primary
     h-full
-    rounded-tl rounded-bl
     origin-left transition-transform scale-x-[${value / 100}]
-    ${value === 100 && `rounded-br rounded-tr`}
   `
 
   return (
@@ -28,7 +26,9 @@ const ProgressBar = ({ value, size }) => {
       aria-valuetext="Progress"
       className={outerStyle}
     >
-      <div className={fillStyle}></div>
+      <div className={tw`rounded overflow-hidden h-full`}>
+        <div className={fillStyle}></div>
+      </div>
     </div>
   )
 }
