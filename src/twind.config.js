@@ -6,7 +6,7 @@ const config = {
   theme: {
     colors: COLORS,
     boxShadow: {
-      inset: `inset 0px 2px 4px rgba(128, 128, 128, 0.35);`,
+      inset: `inset 0px 2px 4px ${COLORS.transparentGray35}`,
     },
     extend: {
       ringWidth: { 3: "3px" },
